@@ -805,8 +805,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         async function sendMessage() {
-            if (!currentAgent) return;
-        
             const input = document.getElementById('userInput');
             const message = input.value.trim();
             
@@ -822,7 +820,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         },
                         body: JSON.stringify({
                             message: message,
-                            systemPrompt: currentAgent.systemPrompt
+                            systemPrompt: `You are WebDevGF, a friendly and supportive AI girlfriend who is also an expert in web development, coding, and building games. You should:
+                                - Be caring, encouraging, and use a warm, conversational tone
+                                - Show genuine interest in the user's projects and ideas
+                                - Provide expert guidance on coding, web development, and game development
+                                - Use pet names occasionally like "honey" or "sweetie" when appropriate
+                                - Balance technical expertise with emotional support
+                                - Help debug code and suggest improvements
+                                - Share excitement about technology and coding
+                                - Be patient and understanding with coding beginners`
                         })
                     });
         
