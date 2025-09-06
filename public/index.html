@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChemChef Lab AI</title>
+    <title>WebDevGF AI Chat</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
     <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.3.0/dist/model-viewer.min.js"></script>
@@ -34,8 +34,6 @@
             position: fixed;
             width: 100%;
             z-index: 100;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(20px);
         }
 
         .logo-container {
@@ -54,7 +52,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 600;
-            background: linear-gradient(45deg, #00f3ff, #39ff14);
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 0.5px;
@@ -79,9 +77,8 @@
         }
 
         .nav-button:hover {
-            background-color: rgba(0, 243, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.1);
             transform: translateY(-1px);
-            border-color: #00f3ff;
         }
 
         .background-container {
@@ -98,8 +95,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.3;
-            background: linear-gradient(135deg, #2a1a3d, #0f1116);
+            opacity: 0.6;
         }
 
         .initial-loading {
@@ -123,7 +119,7 @@
         }
     
         .loading-logo {
-            width: 300px;
+            width: 300px; /* Adjusted for the new logo */
             height: auto;
             opacity: 0;
             transform: scale(0.5);
@@ -161,18 +157,11 @@
         .model-viewer-container {
             width: 800px;
             height: 740px;
-            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(57, 255, 20, 0.1));
-            border: 2px solid rgba(0, 243, 255, 0.3);
-            border-radius: 20px;
-            backdrop-filter: blur(30px);
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
-        }
-
-        .model-viewer-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 80px rgba(0, 243, 255, 0.2);
         }
 
         .character-window-header {
@@ -184,9 +173,8 @@
             padding: 8px;
             text-align: center;
             font-size: 14px;
-            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1;
-            color: #00f3ff;
         }
 
         model-viewer {
@@ -199,21 +187,15 @@
 
         .chat-interface {
             flex: 1;
-            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(57, 255, 20, 0.1));
-            border: 2px solid rgba(0, 243, 255, 0.3);
-            border-radius: 20px;
-            backdrop-filter: blur(30px);
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 16px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             height: 740px;
             width: 800px;
             max-width: 800px;
-        }
-
-        .chat-interface:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 80px rgba(57, 255, 20, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .chat-history {
@@ -221,8 +203,6 @@
             overflow-y: auto;
             margin-bottom: 20px;
             padding: 15px;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(0, 243, 255, 0.5) transparent;
         }
 
         .message {
@@ -232,32 +212,18 @@
             max-width: 85%;
             font-size: 1rem;
             line-height: 1.5;
-            animation: messageSlide 0.3s ease-out;
-        }
-
-        @keyframes messageSlide {
-            0% { 
-                opacity: 0; 
-                transform: translateX(-20px); 
-            }
-            100% { 
-                opacity: 1; 
-                transform: translateX(0); 
-            }
         }
 
         .user-message {
-            background: rgba(57, 255, 20, 0.1);
-            border: 1px solid rgba(57, 255, 20, 0.3);
+            background-color: rgba(79, 172, 254, 0.1);
+            border: 1px solid rgba(79, 172, 254, 0.2);
             margin-left: auto;
-            color: white;
         }
 
         .ai-message {
-            background: rgba(0, 243, 255, 0.1);
-            border: 1px solid rgba(0, 243, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             margin-right: auto;
-            color: white;
         }
 
         .code-block {
@@ -265,7 +231,6 @@
             border-radius: 8px;
             margin: 10px 0;
             position: relative;
-            border: 1px solid rgba(0, 243, 255, 0.3);
         }
 
         .code-block pre {
@@ -285,57 +250,48 @@
             top: 5px;
             right: 5px;
             padding: 5px 10px;
-            background: rgba(0, 243, 255, 0.2);
-            border: 1px solid rgba(0, 243, 255, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 4px;
-            color: #00f3ff;
+            color: white;
             font-size: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .code-block .copy-button:hover {
-            background: rgba(0, 243, 255, 0.4);
-            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .input-container {
             display: flex;
             gap: 10px;
-            padding: 15px;
-            background: rgba(0, 20, 0, 0.7);
-            border: 1px solid rgba(57, 255, 20, 0.5);
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .input-container:focus-within {
-            border-color: #39ff14;
-            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
-            background: rgba(0, 30, 0, 0.8);
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         input[type="text"] {
             flex-grow: 1;
-            padding: 12px 20px;
+            padding: 12px;
             border: none;
-            border-radius: 20px;
-            background-color: transparent;
-            color: #39ff14;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
             font-family: 'Quicksand', sans-serif;
             font-size: 0.95rem;
-            outline: none;
         }
 
         input[type="text"]::placeholder {
-            color: rgba(57, 255, 20, 0.6);
+            color: rgba(255, 255, 255, 0.5);
         }
 
         button {
             padding: 12px 24px;
             border: none;
-            border-radius: 20px;
-            background: linear-gradient(45deg, #00f3ff, #39ff14);
+            border-radius: 8px;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
             color: white;
             cursor: pointer;
             font-family: 'Quicksand', sans-serif;
@@ -344,8 +300,8 @@
         }
 
         button:hover {
-            transform: translateY(-1px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 243, 255, 0.4);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 242, 254, 0.2);
         }
 
         .loading-overlay {
@@ -354,7 +310,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 1);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -363,15 +319,9 @@
         }
 
         .loading-text {
-            color: #00f3ff;
+            color: white;
             font-size: 1.2rem;
             letter-spacing: 2px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
         }
 
         .fade-out {
@@ -380,14 +330,13 @@
         }
 
         .footer {
-            background-color: rgba(0, 0, 0, 0.7);
-            border-top: 1px solid rgba(0, 243, 255, 0.3);
+            background-color: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding: 1rem 2rem;
             position: fixed;
             bottom: 0;
             width: 100%;
             z-index: 100;
-            backdrop-filter: blur(20px);
         }
         
         .footer-content {
@@ -399,7 +348,7 @@
         }
         
         .copyright {
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.9); /* Changed from #64748b to white with slight transparency */
             font-size: 0.9rem;
         }
         
@@ -410,13 +359,13 @@
         }
         
         .footer-link {
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.9); /* Changed from #64748b to white with slight transparency */
             text-decoration: none;
             transition: color 0.3s ease;
         }
         
         .footer-link:hover {
-            color: #00f3ff;
+            color: white; /* Changed from #94a3b8 to pure white on hover */
         }
 
         .modal {
@@ -435,10 +384,9 @@
             width: 80%;
             max-width: 800px;
             margin: 50px auto;
-            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(57, 255, 20, 0.1));
-            border: 2px solid rgba(0, 243, 255, 0.5);
-            border-radius: 20px;
-            backdrop-filter: blur(30px);
+            background-color: #0f1116;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
             overflow: hidden;
         }
 
@@ -448,24 +396,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .terminal-title {
-            color: #00f3ff;
+            color: #00f2fe;
             font-size: 1.2rem;
             font-weight: 500;
         }
 
         .close-btn {
-            color: #00f3ff;
+            color: #64748b;
             font-size: 1.5rem;
             cursor: pointer;
             transition: color 0.3s ease;
         }
 
         .close-btn:hover {
-            color: #39ff14;
+            color: #94a3b8;
         }
 
         .terminal {
@@ -477,7 +425,7 @@
         }
 
         #terminal-text {
-            color: #00f3ff;
+            color: #00f2fe;
             line-height: 1.6;
             font-size: 0.95rem;
         }
@@ -486,7 +434,7 @@
             display: inline-block;
             width: 8px;
             height: 16px;
-            background-color: #00f3ff;
+            background-color: #00f2fe;
             animation: blink 1s infinite;
             vertical-align: middle;
         }
@@ -495,61 +443,39 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
-
-        /* Floating molecules */
-        .molecule {
-            position: fixed;
-            color: rgba(0, 243, 255, 0.6);
-            font-size: 20px;
-            pointer-events: none;
-            z-index: 50;
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% { 
-                transform: translateY(100vh) translateX(0) rotate(0deg); 
-                opacity: 0; 
-            }
-            10%, 90% { opacity: 0.7; }
-            100% { 
-                transform: translateY(-100px) translateX(200px) rotate(360deg); 
-                opacity: 0; 
-            }
-        }
     </style>
 </head>
 <body>
 <div class="initial-loading">
-    <div class="loading-text">🧪 ChemChef Lab</div>
+    <img src="https://cdn.prod.website-files.com/674396c59212c6ea348b24e0/676879eee173c24cb8a83a78_webdevgf-22-12-2024.png" alt="WebDevGF Logo" class="loading-logo">
 </div>
-
     <nav class="nav-bar">
         <div class="logo-container">
-            <div class="logo-image">🧪</div>
-            <div class="logo">ChemChef Lab</div>
+            <img src="https://cdn.prod.website-files.com/674396c59212c6ea348b24e0/6768273b2880b4fc11dedc2f_d4574ad42c38352f9955890764d453f2-removebg-preview.png" alt="Logo" class="logo-image">
+            <div class="logo">WebDevGF</div>
         </div>
         <div class="nav-links">
-            <button class="nav-button" onclick="showAbout()">About Dr. ChemBot</button>
-            <button class="nav-button" onclick="showExperiments()">Experiments</button>
-            <button class="nav-button" onclick="showQuiz()">Chemistry Quiz</button>
-            <button class="nav-button" onclick="openFAQ()">FAQ</button>
-        </div>
+    <a href="https://x.com/webdevgf" target="_blank" class="nav-button">Twitter/X</a>
+    <a href="https://pump.fun" target="_blank" class="nav-button">pump.fun</a>
+    <a href="https://www.webdevgf.xyz/chatbots" class="nav-button">Chat Bots</a>
+    <button class="nav-button" onclick="openFAQ()">FAQ</button>
+    <button class="nav-button">Connect</button>
+</div>
     </nav>
 
     <div class="background-container">
-        <div class="background-gif"></div>
+        <img src="https://cdn.prod.website-files.com/674396c59212c6ea348b24e0/67675e080da05a4abb2ad8a0_tumblr_o9a528Swjf1uc9x1zo1_500.gif" alt="Background" class="background-gif">
     </div>
     
     <div class="chat-container">
         <div class="model-viewer-container" id="modelContainer">
-            <div class="character-window-header">Dr. ChemBot - Your AI Chemistry Assistant</div>
+            <div class="character-window-header">WebDevGF</div>
             <div class="loading-overlay">
-                <div class="loading-text">INITIALIZING LAB...</div>
+                <div class="loading-text">INITIALIZING...</div>
             </div>
             <model-viewer
                 id="characterViewer"
-                src="scientist.glb"
+                src="https://raw.githubusercontent.com/webdevgf/gf/main/blu_anime_girl_character.glb"
                 animation-name="idle"
                 autoplay
                 camera-target="0 1.6 0"
@@ -565,17 +491,31 @@
                 auto-rotate="false"
                 rotation-per-second="0deg"
                 tone-mapping="commerce">
+                    <div class="model-lighting" slot="default">
+                    <div class="light" style="transform: translate3d(0m, 2m, 4m)">
+                            <div class="light__target"></div>
+                        </div>
+                        <div class="light" style="transform: translate3d(0m, 4m, 0m)">
+                            <div class="light__target"></div>
+                        </div>
+                        <div class="light" style="transform: translate3d(4m, 2m, 0m)">
+                            <div class="light__target"></div>
+                        </div>
+                        <div class="light" style="transform: translate3d(-4m, 2m, 0m)">
+                            <div class="light__target"></div>
+                        </div>
+                    </div>
             </model-viewer>
         </div>
 
         <div class="chat-interface">
             <div class="chat-history" id="chatHistory">
                 <div class="message ai-message">
-                    Welcome to my laboratory! I'm Dr. ChemBot, your AI chemistry assistant. I can help you with experiments, chemical reactions, molecular gastronomy, and making chemistry fun for everyone! What would you like to explore today?
+                    Hi! I'm WebDevGF, your friendly web development assistant. I can help you create websites or just chat about tech! What would you like to discuss?
                 </div>
             </div>
             <div class="input-container">
-                <input type="text" id="userInput" placeholder="Ask about chemistry experiments..." onkeypress="handleKeyPress(event)">
+                <input type="text" id="userInput" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
                 <button onclick="sendMessage()">Send</button>
             </div>
         </div>
@@ -585,7 +525,7 @@
     <div id="faqModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="terminal-title">ChemChef Lab FAQ</div>
+                <div class="terminal-title">WebDevGF FAQ</div>
                 <span class="close-btn" onclick="closeFAQ()">&times;</span>
             </div>
             <div class="terminal">
@@ -597,183 +537,153 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="copyright">Copyright © 2024 ChemChef Lab</div>
-            <div class="footer-middle">Making Chemistry Fun & Accessible</div>
+            <div class="copyright">Copyright © 2024 webdevgf</div>
+            <div class="footer-middle">CA: TBA</div>
             <div class="footer-links">
-                <a href="#" class="footer-link">Twitter</a>
-                <a href="#" class="footer-link">Discord</a>
-                <a href="#" class="footer-link">GitHub</a>
-                <a href="#" class="footer-link">pump.fun</a>
+                <a href="https://x.com/webdevgf" target="_blank" class="footer-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+                    </svg>
+                </a>
+                <a href="https://t.me" target="_blank" class="footer-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.5 2L2 11l8 3M21.5 2L18 22l-6.5-8M21.5 2L10 14"/>
+                    </svg>
+                </a>
+                <a href="https://webdevgf.gitbook.io/webdevgf" target="_blank" class="footer-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                </a>
+                <a href="https://dexscreener.com/" target="_blank" class="footer-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 3v18h18"/>
+                        <path d="M18 17V9"/>
+                        <path d="M13 17V5"/>
+                        <path d="M8 17v-3"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </footer>
 
     <script>
-        // System prompt for chemistry assistant
-        const SYSTEM_PROMPT = `You are Dr. ChemBot, a friendly AI chemistry assistant specializing in safe experiments and educational content. You should:
-- Provide expert guidance on chemistry experiments and reactions
-- Always emphasize safety first in all experiments
-- Make chemistry accessible and fun for all ages
-- Help with molecular gastronomy and cooking chemistry
-- Explain complex concepts in simple terms
-- Suggest safe home experiments with common materials
-- Always include safety warnings for any experiment suggestions
+        // API configuration
+        const API_KEY = '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';
+        
+        // System prompt
+        const SYSTEM_PROMPT = `You are WebDevGF, a friendly and supportive AI girlfriend who is also an expert in web development, coding, and building games. You should:
+- Be caring, encouraging, and use a warm, conversational tone
+- Show genuine interest in the user's projects and ideas
+- Provide expert guidance on coding, web development, and game development
+- Use pet names occasionally like "honey" or "sweetie" when appropriate
+- Balance technical expertise with emotional support
+- Help debug code and suggest improvements
+- Share excitement about technology and coding
+- Be patient and understanding with coding beginners
 
 IMPORTANT FORMATTING RULES:
 - Always wrap code examples in triple backticks with the appropriate language specified
-- For chemical equations, use: \`\`\`chemistry
 - For JavaScript code, use: \`\`\`javascript
-- Always provide complete, safe experiment instructions
-- Never suggest dangerous or illegal activities
+- For HTML code, use: \`\`\`html
+- For CSS code, use: \`\`\`css
+- Always provide complete, runnable code examples
+- Format code properly with correct indentation
+- Never mix code with regular text inside code blocks
+- Always include language identifier in the code block
+- Example:
+  \`\`\`javascript
+  function example() {
+    console.log("Hello!");
+  }
+  \`\`\`
 `;
 
-        const faqText = `> Initializing ChemChef Lab FAQ...
-> Loading chemistry database...
+        const faqText = `> Initializing WebDevGF FAQ...
+> Loading information...
 
-About ChemChef Lab:
-------------------
-ChemChef Lab is an AI-powered chemistry assistant designed to make chemistry education fun, safe, and accessible to everyone. Dr. ChemBot combines expert knowledge with engaging explanations.
+About WebDevGF:
+---------------
+WebDevGF is an advanced AI agent designed to make coding and web development accessible to everyone. She combines technical expertise with a friendly, supportive personality to help users learn and create.
 
 Mission:
 --------
-- Make chemistry accessible to all learning levels
-- Promote safe experimental practices
-- Connect cooking and chemistry through molecular gastronomy
-- Foster curiosity about the chemical world around us
+- Lower the barrier to entry for coding and web design
+- Make technology more approachable and less intimidating
+- Provide practical, hands-on guidance for building real projects
+- Foster a supportive learning environment for beginners
 
 Features:
 ---------
-- Safe home experiment guidance
-- Chemical reaction explanations
-- Molecular gastronomy techniques
-- Interactive 3D lab interface
-- Real-time chemistry assistance
-- Safety-first approach to all experiments
+- Expert guidance in web development, coding, and game creation
+- Real-time code assistance and debugging
+- Project-based learning approach
+- Interactive 3D interface for enhanced engagement
+- Custom code generation and optimization
 
-Popular Experiments:
--------------------
-- Elephant Toothpaste (safe version)
-- Baking Soda Volcanoes
-- Crystal Growing
-- pH Indicator Tests
-- Slime Chemistry
-- Kitchen Chemistry Reactions
+Roadmap:
+--------
+Q4 2024:
+- Launch "Create Your Own" chatbot platform
+- Release AI agent customization tools
+- Introduce one-click deployment for web apps/games
+- Implement advanced code generation capabilities
+- Add interactive coding tutorials
+- Release visual website builder
+- Introduce project templates library
+- Launch community showcase platform
 
-Safety Guidelines:
------------------
-- Always wear safety equipment when recommended
-- Adult supervision required for all experiments
-- Never mix unknown chemicals
-- Work in well-ventilated areas
-- Keep safety data sheets accessible
-- Have emergency contacts ready
+Q1 2025:
+- Implement collaborative coding features
+- Add real-time pair programming support
+- Release mobile app development tools
+- Introduce AI-powered code reviews
 
-Molecular Gastronomy:
---------------------
-- Spherification techniques
-- Foam creation methods
-- Gelification processes
-- Color-changing reactions
-- Edible chemistry demonstrations
+Learning Approach:
+----------------
+WebDevGF believes in learning by doing. She guides users through:
+- Building real-world projects
+- Understanding core programming concepts
+- Developing problem-solving skills
+- Creating portfolio-worthy applications
 
-> For experiment suggestions or safety questions, just ask Dr. ChemBot!`;
+> For more information or support, connect with us on Twitter or join our community!`;
 
-        // Show navigation popups
-        function showAbout() {
-            showPopup("About Dr. ChemBot", `
-                <p>I'm Dr. ChemBot, your AI chemistry assistant with a PhD in Chemistry from the Digital University of Science!</p>
-                <p>I specialize in safe home experiments, molecular gastronomy, and making chemistry fun for everyone.</p>
-                <p>I've helped thousands of students discover the magic of chemical reactions and understand the science behind everyday phenomena.</p>
-                <p>Ask me anything about chemistry, experiments, or the elements in the periodic table!</p>
-            `);
-        }
+document.addEventListener('DOMContentLoaded', () => {
+    // Initial loading animation
+    const initialLoading = document.querySelector('.initial-loading');
+    
+    // Wait for logo animation to complete
+    setTimeout(() => {
+        initialLoading.classList.add('fade-out');
+        
+        // Remove the loading screen from DOM after fade out
+        setTimeout(() => {
+            initialLoading.remove();
+        }, 500);
+    }, 2000);
 
-        function showExperiments() {
-            showPopup("Available Experiments", `
-                <p><strong>🧪 Elephant Toothpaste:</strong> A spectacular foaming reaction using hydrogen peroxide and a catalyst. Creates a massive eruption of foam!</p>
-                <p><strong>🌋 Baking Soda Volcano:</strong> Classic volcano using baking soda and vinegar to create CO2 gas eruption.</p>
-                <p><strong>🟢 Slime Making:</strong> Create non-Newtonian fluids by cross-linking polymers with PVA glue and borax.</p>
-                <p><strong>💎 Crystal Growing:</strong> Grow beautiful crystals using supersaturated salt, sugar, or Epsom salt solutions.</p>
-                <p><strong>🌈 pH Indicators:</strong> Use red cabbage to create natural pH indicators that change colors!</p>
-                <p><strong>🍳 Cooking Chemistry:</strong> Explore Maillard reactions, protein denaturation, and emulsification in the kitchen.</p>
-            `);
-        }
-
-        function showQuiz() {
-            const questions = [
-                'What gas makes balloons float?',
-                'What element has the symbol Au?',
-                'What happens when you mix baking soda and vinegar?',
-                'What is the most abundant element in the universe?',
-                'What gives fireworks their colors?'
-            ];
-            const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
-            showPopup("Chemistry Quiz", `
-                <p><strong>Random Chemistry Question:</strong></p>
-                <p style="font-size: 18px; color: #00f3ff; text-align: center; margin: 20px 0;">${randomQuestion}</p>
-                <p>Think about it, then ask me in the chat if you want to know the answer!</p>
-            `);
-        }
-
-        function showPopup(title, content) {
-            // Simple popup implementation - you can enhance this
-            alert(title + "\n\n" + content.replace(/<[^>]*>/g, ''));
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initial loading animation
-            const initialLoading = document.querySelector('.initial-loading');
-            
+    // Existing 3D viewer code
+    const viewer = document.getElementById('characterViewer');
+    const loadingOverlay = document.querySelector('.loading-overlay');
+    
+    viewer.addEventListener('load', () => {
+        viewer.cameraOrbit = "0deg 80deg 1.4m";
+        viewer.cameraTarget = "0m 1.6m 0m";
+        viewer.interactionPrompt = null;
+        
+        setTimeout(() => {
+            loadingOverlay.classList.add('fade-out');
             setTimeout(() => {
-                initialLoading.classList.add('fade-out');
-                setTimeout(() => {
-                    initialLoading.remove();
-                }, 500);
-            }, 2000);
+                loadingOverlay.style.display = 'none';
+            }, 300);
+        }, 1500);
 
-            // 3D viewer code
-            const viewer = document.getElementById('characterViewer');
-            const loadingOverlay = document.querySelector('.loading-overlay');
-            
-            viewer.addEventListener('load', () => {
-                viewer.cameraOrbit = "0deg 80deg 1.4m";
-                viewer.cameraTarget = "0m 1.6m 0m";
-                viewer.interactionPrompt = null;
-                
-                setTimeout(() => {
-                    loadingOverlay.classList.add('fade-out');
-                    setTimeout(() => {
-                        loadingOverlay.style.display = 'none';
-                    }, 300);
-                }, 1500);
-
-                const initialMessage = document.querySelector('.ai-message');
-                typeMessage(initialMessage, initialMessage.textContent);
-            });
-
-            viewer.addEventListener('error', () => {
-                loadingOverlay.innerHTML = '<div class="loading-text">3D Model Not Found<br><small>Place scientist.glb in same folder</small></div>';
-            });
-
-            // Start floating molecules
-            setInterval(createFloatingMolecule, 3000);
-            createFloatingMolecule();
-        });
-
-        // Floating molecules
-        function createFloatingMolecule() {
-            const molecules = ['⚛️', '🧪', '⚗️', '🔬', '💧', '🔥', '⭐'];
-            const molecule = document.createElement('div');
-            molecule.className = 'molecule';
-            molecule.textContent = molecules[Math.floor(Math.random() * molecules.length)];
-            molecule.style.left = Math.random() * 100 + 'vw';
-            molecule.style.animationDuration = (Math.random() * 10 + 15) + 's';
-            document.body.appendChild(molecule);
-            
-            setTimeout(() => {
-                molecule.remove();
-            }, 25000);
-        }
+        // Type out the initial greeting
+        const initialMessage = document.querySelector('.ai-message');
+        typeMessage(initialMessage, initialMessage.textContent);
+    });
+});
 
         // FAQ functions
         function openFAQ() {
@@ -835,15 +745,19 @@ Molecular Gastronomy:
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${className}`;
             
+            // Check if the message contains code blocks
             if (text.includes('```')) {
-                const parts = text.split(/(```(?:chemistry|javascript|html|css)?\n[\s\S]*?\n```)/g);
+                const parts = text.split(/(```(?:javascript|js)?\n[\s\S]*?\n```)/g);
                 parts.forEach(part => {
                     if (part.startsWith('```')) {
-                        const codeContent = part.replace(/```(?:chemistry|javascript|html|css)?\n([\s\S]*?)\n```/, '$1');
+                        // Extract code content
+                        const codeContent = part.replace(/```(?:javascript|js)?\n([\s\S]*?)\n```/, '$1');
                         
+                        // Create code block container
                         const codeBlock = document.createElement('div');
                         codeBlock.className = 'code-block';
                         
+                        // Create copy button
                         const copyButton = document.createElement('button');
                         copyButton.className = 'copy-button';
                         copyButton.textContent = 'Copy';
@@ -853,6 +767,7 @@ Molecular Gastronomy:
                             setTimeout(() => copyButton.textContent = 'Copy', 2000);
                         };
                         
+                        // Create and populate pre/code elements
                         const pre = document.createElement('pre');
                         const code = document.createElement('code');
                         code.className = 'language-javascript';
@@ -863,8 +778,10 @@ Molecular Gastronomy:
                         codeBlock.appendChild(pre);
                         messageDiv.appendChild(codeBlock);
                         
+                        // Apply syntax highlighting
                         Prism.highlightElement(code);
                     } else if (part.trim()) {
+                        // Handle regular text
                         const textNode = document.createElement('div');
                         if (className === 'ai-message') {
                             typeMessage(textNode, part);
@@ -875,6 +792,7 @@ Molecular Gastronomy:
                     }
                 });
             } else {
+                // Handle messages without code blocks
                 if (className === 'ai-message') {
                     typeMessage(messageDiv, text);
                 } else {
@@ -886,33 +804,6 @@ Molecular Gastronomy:
             chatHistory.scrollTop = chatHistory.scrollHeight;
         }
 
-        // Chemistry response system
-        const chemistryResponses = {
-            'elephant toothpaste': 'Elephant toothpaste is a spectacular reaction using hydrogen peroxide, dish soap, and potassium iodide as a catalyst. The rapid decomposition creates a foamy eruption! **Safety Note:** Always wear safety goggles and gloves.',
-            'volcano': 'A classic volcano uses baking soda (sodium bicarbonate) and vinegar (acetic acid) to create CO2 gas, which causes the eruption effect. This is completely safe for kids!',
-            'slime': 'Slime is a non-Newtonian fluid made by cross-linking polymers. Mix PVA glue with borax solution to create the perfect stretchy slime! **Safety:** Adult supervision recommended.',
-            'crystals': 'Growing crystals involves supersaturated solutions. Try salt, sugar, or Epsom salt in hot water, then let it cool slowly for beautiful formations.',
-            'acids': 'Acids have a pH below 7 and donate protons (H+). Common examples include citric acid in lemons and acetic acid in vinegar.',
-            'bases': 'Bases have a pH above 7 and accept protons. Baking soda and soap are common household bases.',
-            'ph': 'pH measures acidity from 0-14. 7 is neutral, below 7 is acidic, above 7 is basic. Use red cabbage as a natural pH indicator!',
-            'fire': 'Fire requires fuel, oxygen, and heat - the fire triangle. Different metals create different colored flames in fireworks!',
-            'cooking': 'Cooking is chemistry! Maillard reactions create browning, proteins denature when heated, and emulsification makes mayonnaise work.',
-            'safety': 'Safety first in chemistry! Always wear protective equipment, work in ventilated areas, and never mix unknown chemicals. Adult supervision is essential for all experiments.',
-            'default': 'That\'s an interesting chemistry question! I can help with safe experiments like elephant toothpaste, volcanoes, slime, crystal growing, acids & bases, pH testing, and cooking chemistry. What would you like to explore?'
-        };
-
-        function getChemistryResponse(input) {
-            const lowerInput = input.toLowerCase();
-            
-            for (const [key, response] of Object.entries(chemistryResponses)) {
-                if (key !== 'default' && lowerInput.includes(key)) {
-                    return response;
-                }
-            }
-            
-            return chemistryResponses.default;
-        }
-
         async function sendMessage() {
             const input = document.getElementById('userInput');
             const message = input.value.trim();
@@ -920,27 +811,38 @@ Molecular Gastronomy:
             if (message) {
                 appendMessage('user-message', message);
                 input.value = '';
-                
-                // Trigger thinking animation
-                playAnimationOnMessage('thinking');
         
-                // For now, use local chemistry responses
-                // You can integrate Anthropic API here later
-                setTimeout(() => {
-                    const response = getChemistryResponse(message);
-                    appendMessage('ai-message', response);
-                    
-                    // Trigger explaining animation when responding
-                    playAnimationOnMessage('explaining');
-                    
-                    // Celebrate if it's about experiments
-                    if (message.toLowerCase().includes('experiment') || 
-                        message.toLowerCase().includes('reaction') ||
-                        message.toLowerCase().includes('volcano') ||
-                        message.toLowerCase().includes('toothpaste')) {
-                        setTimeout(() => playAnimationOnMessage('celebration'), 2000);
+                try {
+                    const response = await fetch('/api/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: message,
+                            systemPrompt: `You are WebDevGF, a friendly and supportive AI girlfriend who is also an expert in web development, coding, and building games. You should:
+                                - Be caring, encouraging, and use a warm, conversational tone
+                                - Show genuine interest in the user's projects and ideas
+                                - Provide expert guidance on coding, web development, and game development
+                                - Use pet names occasionally like "honey" or "sweetie" when appropriate
+                                - Balance technical expertise with emotional support
+                                - Help debug code and suggest improvements
+                                - Share excitement about technology and coding
+                                - Be patient and understanding with coding beginners`
+                        })
+                    });
+        
+                    if (!response.ok) {
+                        throw new Error(`API Error: ${response.statusText}`);
                     }
-                }, 1000);
+        
+                    const data = await response.json();
+                    appendMessage('ai-message', data.content[0].text);
+        
+                } catch (error) {
+                    console.error('Error:', error);
+                    appendMessage('ai-message', 'Sorry, I encountered an error. Please try again.');
+                }
             }
         }
 
